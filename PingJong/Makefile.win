@@ -1,0 +1,30 @@
+# Project: Project1
+# Makefile created by Dev-C++ 5.0.0.8
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = 
+OBJ      = code.o $(RES)
+LINKOBJ  = code.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/lib" -L"C:/Program Files (x86)/Dev-Cpp/lib/gcc" -L"C:/Program Files (x86)/Dev-Cpp/lib" -L"C:/Program Files (x86)/Dev-Cpp/lib/gcc" -static-libstdc++ -static-libgcc -mwindows -lalleg_s -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lole32 -ldinput -lddraw -ldxguid -lwinmm -ldsound 
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/include"  -I"C:/Program Files (x86)/Dev-Cpp/include" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/include"  -I"C:/Program Files (x86)/Dev-Cpp/include" 
+BIN      = Ping_Jong.exe
+CXXFLAGS = $(CXXINCS) -DALLEGRO_STATICLINK 
+CFLAGS   = $(INCS) -DALLEGRO_STATICLINK 
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Ping_Jong.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Ping_Jong.exe" $(LIBS)
+
+code.o: code.c
+	$(CPP) -c code.c -o code.o $(CXXFLAGS)
